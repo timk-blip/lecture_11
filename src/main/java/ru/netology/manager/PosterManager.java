@@ -1,9 +1,20 @@
 package ru.netology.manager;
 
+import lombok.Getter;
 import ru.netology.domain.PurchaseItem;
-
 public class PosterManager {
+    @Getter
+    private int films = 10;
     private PurchaseItem[] items = new PurchaseItem[0];
+
+    public PosterManager(){
+
+    }
+    public PosterManager(int films){
+        if (films > 0) {
+            this.films = films;
+        }
+    }
 
     public void add(PurchaseItem item) {
         // создаём новый массив размером на единицу больше
@@ -16,17 +27,13 @@ public class PosterManager {
     }
 
     public PurchaseItem[] getAll() {
-        PurchaseItem[] result = new PurchaseItem[items.length];
+        int lengthDisplayFilm = Math.min(items.length, films);
+        PurchaseItem[] result = new PurchaseItem[lengthDisplayFilm];
         for (int i = 0; i < result.length; i++) {
-            int index = items.length - i - 1;
+            int index = result.length - i - 1;
             result[i] = items[index];
         }
         return result;
-    }
-
-    public void lastFilms(PurchaseItem item) {
-        getAll();
-        if ()
     }
 
 }

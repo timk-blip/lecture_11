@@ -9,16 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 class PosterManagerTest {
     PosterManager manager = new PosterManager();
     int lastFilms = 3;
-    PurchaseItem first = new PurchaseItem(1, 1, "first", "ganer");
-    PurchaseItem second = new PurchaseItem(2, 2, "second", "ganer");
-    PurchaseItem third = new PurchaseItem(3, 3, "third", "ganer");
-    PurchaseItem fourth = new PurchaseItem(4, 4, "fourth", "ganer");
-    PurchaseItem fifth = new PurchaseItem(5, 5, "fifth", "ganer");
-    PurchaseItem sixth = new PurchaseItem(6, 6, "sixth", "ganer");
-    PurchaseItem seventh = new PurchaseItem(7, 7, "seventh", "ganer");
-    PurchaseItem eighth = new PurchaseItem(8, 8, "eighth", "ganer");
-    PurchaseItem ninth = new PurchaseItem(9, 9, "ninth", "ganer");
-    PurchaseItem tenth = new PurchaseItem(10, 10, "tenth", "ganer");
+    PurchaseItem first = new PurchaseItem(1, 1, "first", "ganer", false);
+    PurchaseItem second = new PurchaseItem(2, 2, "second", "ganer", true);
+    PurchaseItem third = new PurchaseItem(3, 3, "third", "ganer", false);
+    PurchaseItem fourth = new PurchaseItem(4, 4, "fourth", "ganer", false);
+    PurchaseItem fifth = new PurchaseItem(5, 5, "fifth", "ganer", true);
+    PurchaseItem sixth = new PurchaseItem(6, 6, "sixth", "ganer", true);
+    PurchaseItem seventh = new PurchaseItem(7, 7, "seventh", "ganer", false);
+    PurchaseItem eighth = new PurchaseItem(8, 8, "eighth", "ganer", true);
+    PurchaseItem ninth = new PurchaseItem(9, 9, "ninth", "ganer", false);
+    PurchaseItem tenth = new PurchaseItem(10, 10, "tenth", "ganer", true);
 
     @BeforeEach
     void setUp() {
@@ -35,13 +35,20 @@ class PosterManagerTest {
     }
 
     @Test
-    void add() {
+    public void shouldAddAllFilms() {
+        manager = new PosterManager();
+        setUp();
         PurchaseItem[] actual = manager.getAll();
         PurchaseItem[] expected = new PurchaseItem[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
         assertArrayEquals(actual, expected);
     }
-
     @Test
-    void getAll() {
+    public void shouldAddFilms() {
+        manager = new PosterManager(8);
+        setUp();
+        PurchaseItem[] actual = manager.getAll();
+        PurchaseItem[] expected = new PurchaseItem[]{eighth, seventh, sixth, fifth, fourth, third, second, first};
+        assertArrayEquals(actual, expected);
     }
+
 }

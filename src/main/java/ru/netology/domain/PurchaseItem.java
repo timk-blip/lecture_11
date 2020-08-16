@@ -11,5 +11,5 @@ public class PurchaseItem {
     private int filmsId;
     private String nameFilms;
     private String ganerFilms;
-
+    private boolean premierTomorrow;
 }
